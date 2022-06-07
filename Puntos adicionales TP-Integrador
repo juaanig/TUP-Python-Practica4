@@ -1,0 +1,29 @@
+5- Agregar a la tabla Perros una columna que indique el comportamiento del mismo. La misma al cargar el perro no va a completarse
+sino que luego de que el perro sea atendido el peluquero debe tener la posibilidad de acceder al perro mediante su nombre e ingresar
+al campo. Las posibilidades son: muy bien, bien, mal, muy mal.
+
+La peluqueria quiere también integrar al sistema la gestión del personal. Actualmente la peluqueria cuenta con 3 peluqueros pero 
+se estima que en un futuro sean más. Por otro lado, también se encuentra el recepcionista que es quien se encarga de recibir los 
+perros y realizar el sistema de cobranza. Se requiere que el sistema lleve a cabo las siguientes opciones adicionales para esta 
+gestión.
+6- Cargar personal. 
+De cada peluquero se conoce: Código identificatorio, nombre y apellido, DNI, Dirección, Telefono, email, años de experiencia, sueldo. 
+De cada recepcionista se conoce: Código identificatorio, nombre y apellido, DNI, Direccion, Telefono, email, sueldo. 
+El codigo identificatorio se compone de la siguiente manera: 
+Peluqueros --> PQ_(ultimos 3 dígitos del DNI)
+Recepcionistas --> RC_(ultimos 3 dígitos del DNI)
+Nota: El código identificatorio debe ser considerado como clave primaria.
+7- Listado Peluqueros. 
+Por pantalla se lee un monto y luego se debe listar aquellos peluqueros que tengan como sueldo superior al monto ingresado.
+(ejemplo: ingresamos $10000. Por pantalla se deben mostrar aquellos peluqueros que ganen mas de $10000)
+8- Salir del menu
+
+Nota: En el caso de optar por estos puntos adicionales para tomar la práctica 4 como TP Integrador la opción "salir de menu"
+tomarla como opción 8 en lugar de opción 5.
+
+Para regularizar:
+-Se deben llevar a cabo todos los puntos.
+
+Para aprobación directa:
+-Se debe llevar a cabo todos los puntos en conjunto con una intefaz gráfica. (Tkinter o Pyqt)
+-Usar POO.
