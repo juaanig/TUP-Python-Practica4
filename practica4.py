@@ -90,8 +90,22 @@ class ProgramaPrincipal:
                 #LISTADO DE CANINOS
                 try:
                     if nro == 5:
+
                         Perro.listado_perros()
-                        self.menu()
+                        opcion=input('\n¿Desea modificar el comportamiento?\nPresione Y para continuar o cualquier otra tecla para salir: ').upper()
+                        
+                        if opcion == 'Y':
+                            nuevoPerro=input('Ingrese el nombre del perro: ').upper()
+                            
+                            if Perro.lista_nombres_perros(nuevoPerro):
+                                nuevoComportamiento=str(input('Ingrese el nuevo comportamiento: ')).lower() 
+
+                                if nuevoComportamiento in ['muy bien','bien','mal','muy mal']:
+                                    Perro.agregar_comportamiento(nuevoComportamiento,nuevoPerro)  
+                                else:
+                                    print('El comportamiento ingresado no es válido')
+
+                            self.menu()
                 except:
                     print('Error en opción 5')
                     self.menu()
@@ -105,7 +119,6 @@ class ProgramaPrincipal:
         except:
             print('* Error ejecucion de metodo menú *')
             self.menu()    
-
 
 
 programa = ProgramaPrincipal()

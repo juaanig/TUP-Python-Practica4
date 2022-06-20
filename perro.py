@@ -63,6 +63,24 @@ class Perro:
         conexion.miCursor.execute("SELECT * FROM PERROS")
         records = conexion.miCursor.fetchall()
         for row in records:
-            print("perro: ", row[0],"dueño: ", row[1],"direccion: ", row[2],"telefono: ", row[3])
+            print("perro: ", row[0],"dueño: ", row[1],"direccion: ", row[2],"telefono: ", row[3],"comportamiento: ", row[6])
         conexion.miConexion.commit()
         conexion.cerrarConexion()
+    
+    @classmethod
+    def agregar_comportamiento(self,arg1,arg2):
+        conexion = Conexiones()
+        conexion.abrirConexion()
+        conexion.miCursor.execute("UPDATE PERROS SET COMPORTAMIENTO='{}' WHERE NOMBRE_PERRO='{}'".format(arg1,arg2))
+        conexion.miConexion.commit()
+        conexion.cerrarConexion()
+    
+    @classmethod
+    def lista_nombres_perros(self,arg1):
+        conexion = Conexiones()
+        conexion.abrirConexion()
+        conexion.miCursor.execute("SELECT NOMBRE_PERRO FROM PERROS WHERE NOMBRE_PERRO='{}'".format(arg1))
+        records = conexion.miCursor.fetchone()
+        conexion.miConexion.commit()
+        conexion.cerrarConexion()
+        return True if arg1 in records else False
