@@ -80,8 +80,8 @@ class Perro:
     def lista_nombres_perros(self,arg1):
         conexion = Conexiones()
         conexion.abrirConexion()
-        conexion.miCursor.execute("SELECT NOMBRE_PERRO FROM PERROS WHERE NOMBRE_DUENO='{}'".format(arg1))
-        records = conexion.miCursor.fetchall()
+        conexion.miCursor.execute("SELECT NOMBRE_PERRO FROM PERROS WHERE NOMBRE_PERRO='{}'".format(arg1))
+        records = conexion.miCursor.fetchone()
         conexion.miConexion.commit()
         conexion.cerrarConexion()
         return True if arg1 in records else False

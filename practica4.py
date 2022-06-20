@@ -96,14 +96,13 @@ class ProgramaPrincipal:
                         opcion=input('Desea modificar el comportamiento? Presione Y para continuar o cualquier otra tecla para salir.').upper()
                         if opcion == 'Y':
                             nuevoPerro=input('Ingrese el nombre del perro: ').upper()
-                            try:
-                                if  Perro.lista_nombres_perros(nuevoPerro):
+                            if Perro.lista_nombres_perros(nuevoPerro):
                                     nuevoComportamiento=str(input('Ingrese el nuevo comportamiento: ')).lower()   
                                     if nuevoComportamiento in ['muy bien','bien','mal','muy mal']:
                                         Perro.agregar_comportamiento(nuevoPerro,nuevoComportamiento)  
                                     else:
                                         print('El comportamiento ingresado no es válido')
-                            except:
+                            else:
                                 print('El perro no existe')
                                 self.menu()
                 except:
