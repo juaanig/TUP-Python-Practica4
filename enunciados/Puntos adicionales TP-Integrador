@@ -6,8 +6,10 @@ Las posibilidades son: muy bien, bien, mal, muy mal.
 La peluqueria quiere también integrar al sistema la gestión del personal. 
 Actualmente la peluqueria cuenta con 3 peluqueros pero 
 se estima que en un futuro sean más. Por otro lado, también se encuentra el recepcionista que es 
-quien se encarga de recibir los  perros y realizar el sistema de cobranza. 
-Se requiere que el sistema lleve a cabo las siguientes opciones adicionales para esta gestión.
+quien se encarga de recibir los 
+perros y realizar el sistema de cobranza. Se requiere que el sistema lleve a cabo las siguientes 
+opciones adicionales para esta 
+gestión.
 
 6- Cargar personal. 
 De cada peluquero se conoce: Código identificatorio, nombre y apellido, DNI, Dirección, Telefono, email, años de 
@@ -21,7 +23,6 @@ Nota: El código identificatorio debe ser considerado como clave primaria.
 7- Listado Peluqueros. 
 Por pantalla se lee un monto y luego se debe listar aquellos peluqueros que tengan como sueldo superior al monto ingresado.
 (ejemplo: ingresamos $10000. Por pantalla se deben mostrar aquellos peluqueros que ganen mas de $10000)
-
 8- Salir del menu
 
 Nota: En el caso de optar por estos puntos adicionales para tomar la práctica 4 como TP Integrador la opción "salir de menu"
