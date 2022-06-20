@@ -4,6 +4,8 @@ from perro import Perro
 
 class ProgramaPrincipal:
 
+    
+
     flag = True
 
     def menu(self):
@@ -94,13 +96,16 @@ class ProgramaPrincipal:
                         opcion=input('Desea modificar el comportamiento? Presione Y para continuar o cualquier otra tecla para salir.').upper()
                         if opcion == 'Y':
                             nuevoPerro=input('Ingrese el nombre del perro: ').upper()
-                            #validar si existe el perro
-                            nuevoComportamiento=input('Ingrese el nuevo comportamiento: ')
-                            #if nuevoComportamiento
-
-                            Perro.agregar_comportamiento(nuevoComportamiento,nuevoPerro)  
-
-                        self.menu()
+                            try:
+                                if  Perro.lista_nombres_perros(nuevoPerro):
+                                    nuevoComportamiento=str(input('Ingrese el nuevo comportamiento: ')).lower()   
+                                    if nuevoComportamiento in ['muy bien','bien','mal','muy mal']:
+                                        Perro.agregar_comportamiento(nuevoPerro,nuevoComportamiento)  
+                                    else:
+                                        print('El comportamiento ingresado no es válido')
+                            except:
+                                print('El perro no existe')
+                                self.menu()
                 except:
                     print('Error en opción 5')
                     self.menu()

@@ -75,3 +75,13 @@ class Perro:
         conexion.miCursor.execute("UPDATE PERROS SET COMPORTAMIENTO='{}' WHERE NOMBRE_PERRO='{}'".format(arg1,arg2))
         conexion.miConexion.commit()
         conexion.cerrarConexion()
+
+    @classmethod
+    def lista_nombres_perros(self,arg1):
+        conexion = Conexiones()
+        conexion.abrirConexion()
+        conexion.miCursor.execute("SELECT NOMBRE_PERRO FROM PERROS WHERE NOMBRE_DUENO='{}'".format(arg1))
+        records = conexion.miCursor.fetchall()
+        conexion.miConexion.commit()
+        conexion.cerrarConexion()
+        return True if arg1 in records else False
