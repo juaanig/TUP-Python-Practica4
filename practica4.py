@@ -91,6 +91,15 @@ class ProgramaPrincipal:
                 try:
                     if nro == 5:
                         Perro.listado_perros()
+                        opcion=input('Desea modificar el comportamiento? Presione Y para continuar o cualquier otra tecla para salir.').upper()
+                        if opcion == 'Y':
+                            nuevoPerro=input('Ingrese el nombre del perro: ').upper()
+                            #validar si existe el perro
+                            nuevoComportamiento=input('Ingrese el nuevo comportamiento: ')
+                            #if nuevoComportamiento
+
+                            Perro.agregar_comportamiento(nuevoComportamiento,nuevoPerro)  
+
                         self.menu()
                 except:
                     print('Error en opción 5')

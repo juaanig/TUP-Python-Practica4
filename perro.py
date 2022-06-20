@@ -3,13 +3,14 @@ from conexiones import Conexiones
 class Perro:
 
     #CONSTRUCTOR PARA INSTANCIAS UN OBJETO PERRO CON LOS VALORES RECIBIDOS EN EL CONSTRUCTOR
-    def __init__(self, name_dog, name_human,dog_addres,dog_phone,bath,bathhaircut):
+    def __init__(self, name_dog, name_human,dog_addres,dog_phone,bath,bathhaircut,behavior):
         self.nombre_perro = name_dog
         self.nombre_dueño = name_human
         self.direccion = dog_addres
         self.telefono = dog_phone
         self.baño = bath
         self.bayco = bathhaircut
+        self.comportamiento = behavior
     
 
     def cargar_perro(self):
@@ -17,7 +18,7 @@ class Perro:
         #  Y CONSUMIR SUS METODOS 'C.R.U.D'
         conexion = Conexiones()
         conexion.abrirConexion()
-        conexion.miCursor.execute("INSERT INTO PERROS VALUES('{}','{}','{}','{}','{}','{}')".format(self.nombre_perro, self.nombre_dueño, self.direccion,self.telefono,self.baño,self.bayco))
+        conexion.miCursor.execute("INSERT INTO PERROS VALUES('{}','{}','{}','{}','{}','{}','NULL')".format(self.nombre_perro, self.nombre_dueño, self.direccion,self.telefono,self.baño,self.bayco))
         conexion.miConexion.commit()
         conexion.cerrarConexion()
     
@@ -64,5 +65,13 @@ class Perro:
         records = conexion.miCursor.fetchall()
         for row in records:
             print("perro: ", row[0],"dueño: ", row[1],"direccion: ", row[2],"telefono: ", row[3])
+        conexion.miConexion.commit()
+        conexion.cerrarConexion()
+
+    @classmethod
+    def agregar_comportamiento(self,arg1,arg2):
+        conexion = Conexiones()
+        conexion.abrirConexion()
+        conexion.miCursor.execute("UPDATE PERROS SET COMPORTAMIENTO='{}' WHERE NOMBRE_PERRO='{}'".format(arg1,arg2))
         conexion.miConexion.commit()
         conexion.cerrarConexion()
