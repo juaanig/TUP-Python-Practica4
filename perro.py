@@ -17,7 +17,7 @@ class Perro:
         #  Y CONSUMIR SUS METODOS 'C.R.U.D'
         conexion = Conexiones()
         conexion.abrirConexion()
-        conexion.miCursor.execute("INSERT INTO PERROS VALUES('{}','{}','{}','{}','{}','{}')".format(self.nombre_perro, self.nombre_dueño, self.direccion,self.telefono,self.baño,self.bayco))
+        conexion.miCursor.execute("INSERT INTO PERROS VALUES('{}','{}','{}','{}','{}','{}','NULL')".format(self.nombre_perro, self.nombre_dueño, self.direccion,self.telefono,self.baño,self.bayco))
         conexion.miConexion.commit()
         conexion.cerrarConexion()
     

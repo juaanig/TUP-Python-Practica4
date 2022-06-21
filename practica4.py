@@ -1,4 +1,5 @@
 from perro import Perro
+from cargar_personal import *
 
 #VALIDAR TODOS LOS INGRESO DE DATOS
 
@@ -11,7 +12,7 @@ class ProgramaPrincipal:
             while self.flag:
                 try:
                     print('____________________________________\n')
-                    print('\tMENÚ\n1- Cargar Perros.\n2- Modificar datos de un perro.\n3- Borrar un perro.\n4- Cargar visita.\n5- Listado de Perros.\n0- Salir del menú.')
+                    print('\tMENÚ\n1- Cargar Perros.\n2- Modificar datos de un perro.\n3- Borrar un perro.\n4- Cargar visita.\n5- Listado de Perros.\n6- Cargar personal\n7- Listado peluqueros\n0- Salir del menú.')
                     print('____________________________________')
                     nro = int(input("\nPor favor ingrese un número: "))
                 except:
@@ -109,8 +110,62 @@ class ProgramaPrincipal:
                 except:
                     print('Error en opción 5')
                     self.menu()
-                # ==================== OPCION 0 ==================== 
-                #SALIDA DEL MENU
+                # ==================== OPCION 6 ====================
+                #CARGAR PERSONAL
+                try:
+                    if nro == 6:
+                        
+                        bandera = True
+                        while bandera:
+                            print("Seleccione una opción:\n1-Peluquero\n2-Recepcionista\n3-Salir")
+                            seleccion=int(input("Seleccione una opción: "))
+
+                            if seleccion == 1:
+                                name = input('nombre: ').upper()
+                                lastname = input('apellido: ').upper()
+                                dni = int(input('dni: '))
+                                address = input('dirección: ').upper()
+                                phone = int(input('Teléfono: '))
+                                email=str(input('email: ')).upper()
+                                experience=int(input('experiencia: '))
+                                sueldo=int(input('sueldo: '))
+
+                                peluquero1 = Peluquero(name,lastname,dni,address,phone,email,experience,sueldo)
+                                peluquero1.crearCod()
+                                peluquero1.cargarCodPeluquero()
+    
+                            elif seleccion == 2:
+                                name = input('nombre: ').upper()
+                                lastname = input('apellido: ').upper()
+                                dni = int(input('dni: '))
+                                address = input('dirección: ').upper()
+                                phone = int(input('Teléfono: '))
+                                email=str(input('email: ')).upper()
+                                sueldo=int(input('sueldo: '))
+
+                                recepcionista1= Recepcionista(name,lastname,dni,address,phone,email,sueldo)
+                                recepcionista1.crearCod()
+                                recepcionista1.cargarCodRecepcionista()
+
+                            elif seleccion == 3:
+                                bandera = False
+                            else:
+                                print('Numero invalido')
+                except:
+                    print('Error en opción 6')
+                    self.menu()
+                # ==================== OPCION 7 ====================
+                #LISTADO DE PELUQUEROS
+                try:
+                    if nro == 7:
+                        monto= int(input('Ingrese un monto: '))
+                        Peluquero.listado_peluqueros(monto)
+                except:
+                    print('Error en opción 7')
+                    self.menu()
+
+                # ==================== OPCION 0 ====================
+                 #SALIDA DEL MENU
                 try:
                     if nro == 0:
                         self.flag = False
@@ -118,8 +173,8 @@ class ProgramaPrincipal:
                     break
         except:
             print('* Error ejecucion de metodo menú *')
-            self.menu()    
-
-
+            self.menu()  
+    
+                
 programa = ProgramaPrincipal()
 programa.menu()
