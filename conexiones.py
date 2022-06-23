@@ -9,10 +9,10 @@ class Conexiones:
     def cerrarConexion(self):
         self.miConexion.close()
 
-'''
-miConexion=sqlite3.connect("Peluqueria")
-miCursor=miConexion.cursor()
-miCursor.execute("""CREATE TABLE PELUQUEROS(
+    def crearTablas(self):
+        self.miConexion = sqlite3.connect("Peluqueria")
+        self.miCursor = self.miConexion.cursor()
+        self.miCursor.execute("""CREATE TABLE PELUQUEROS(
                     CODID VARCHAR(7) PRIMARY KEY,
                     NOMBRE VARCHAR(50),
                     APELLIDO VARCHAR(50),
@@ -23,8 +23,7 @@ miCursor.execute("""CREATE TABLE PELUQUEROS(
                     SUELDO INTEGER(10),
                     EXPERIENCIA INTEGER(2))""")
 
-
-miCursor.execute("""CREATE TABLE RECEPCIONISTA(
+        self.miCursor.execute("""CREATE TABLE RECEPCIONISTA(
                     CODID VARCHAR(7) PRIMARY KEY,
                     NOMBRE VARCHAR(50),
                     APELLIDO VARCHAR(50),
@@ -34,13 +33,14 @@ miCursor.execute("""CREATE TABLE RECEPCIONISTA(
                     EMAIL VARCHAR(50),
                     SUELDO INTEGER(10))""")
 
+        self.miCursor.execute("""CREATE TABLE PERROS (
+                    NOMBRE_PERRO VARCHAR(30) UNIQUE,
+                    NOMBRE_DUEÑO VARCHAR(30),
+                    DIRECCION VARCHAR(30),
+                    TELEFONO INTEGER(11),
+                    BAÑO NUMERIC,
+                    BAYCO NUMERIC,
+                    COMPORTAMIENTO TEXT(10))""")
 
-#Creacion de tabla
-miCursor.execute("""CREATE TABLE IF NOT EXISTS DATOS (
-    ID INTEGER PRIMARY KEY AUTOINCREMENT,
-    NOMBRE_PERRO VARCHAR(50),
-    NOMBRE_DUEÑO VARCHAR(50),
-    DOMICILIO VARCHAR(50), 
-    TEL INTEGER(11))
-    """)
-'''
+        self.miConexion.commit()
+        self.cerrarConexion()

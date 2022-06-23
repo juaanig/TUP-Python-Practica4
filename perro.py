@@ -15,6 +15,8 @@ class Perro:
     def cargar_perro(self):
         # SI BIEN EN ESTE METODO CARGAMOS AL PERRO ,DEBEMOS INSTANCIAR UN OBJECTO DE LA CLASE 'Conexiones()'
         #  Y CONSUMIR SUS METODOS 'C.R.U.D'
+        if self.baño == 1: self.bayco = 0 
+        else: self.baño = 1
         conexion = Conexiones()
         conexion.abrirConexion()
         conexion.miCursor.execute("INSERT INTO PERROS VALUES('{}','{}','{}','{}','{}','{}','NULL')".format(self.nombre_perro, self.nombre_dueño, self.direccion,self.telefono,self.baño,self.bayco))
@@ -62,10 +64,9 @@ class Perro:
         conexion.abrirConexion()
         conexion.miCursor.execute("SELECT * FROM PERROS")
         records = conexion.miCursor.fetchall()
-        for row in records:
-            print("perro: ", row[0],"dueño: ", row[1],"direccion: ", row[2],"telefono: ", row[3],"comportamiento: ", row[6])
         conexion.miConexion.commit()
         conexion.cerrarConexion()
+        return records
     
     @classmethod
     def agregar_comportamiento(self,arg1,arg2):

@@ -14,11 +14,9 @@ class Personal():
 
 
 class Peluquero(Personal):
-
-    def crearCod(self):
-        self.codID= 'PQ_'+ str(self.dni)[5:9]
-        
+ 
     def cargarCodPeluquero(self):
+        self.codID= 'PQ_'+ str(self.dni)[-3:]
         conexion = Conexiones()
         conexion.abrirConexion()
         conexion.miCursor.execute("INSERT INTO PELUQUEROS VALUES('{}','{}','{}','{}','{}','{}','{}','{}','{}') ".format(self.codID,self.nombre,self.apellido,self.dni,self.direccion,self.telefono,self.email,self.sueldo,self.exp))
@@ -32,23 +30,25 @@ class Peluquero(Personal):
         conexion.abrirConexion()
         conexion.miCursor.execute("SELECT * FROM PELUQUEROS WHERE SUELDO > {}".format(monto))
         peluqueros = conexion.miCursor.fetchall()
-        for peluquero in peluqueros:
-            print(peluquero[0],peluquero[1],peluquero[2],peluquero[3],peluquero[4],peluquero[5],peluquero[6],peluquero[7])
-            print("\n")
         conexion.cerrarConexion()
+        return peluqueros
 
 #############################################################################################################################
-
-
 class Recepcionista(Personal):
 
-    def crearCod(self):
-        self.codID= 'RE_'+ str(self.dni)[5:9]
-
     def cargarCodRecepcionista(self):
+        self.codID= 'RE_'+ str(self.dni)[-3:]
         conexion = Conexiones()
         conexion.abrirConexion()
         conexion.miCursor.execute("INSERT INTO RECEPCIONISTA VALUES('{}','{}','{}','{}','{}','{}','{}','{}') ".format(self.codID,self.nombre,self.apellido,self.dni,self.direccion,self.telefono,self.email,self.sueldo))
         conexion.miConexion.commit()
+        conexion.cerrarConexion()  
+
+    @classmethod
+    def listado_recepcionistas(self):
+        conexion = Conexiones()
+        conexion.abrirConexion()
+        conexion.miCursor.execute("SELECT * FROM RECEPCIONISTA")
+        recepcionista = conexion.miCursor.fetchall()
         conexion.cerrarConexion()
-        print("###### RECEPCIONISTA CARGADO EXITOSAMENTE ######")   
+        return recepcionista
