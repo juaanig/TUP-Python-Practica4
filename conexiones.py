@@ -34,7 +34,7 @@ class Conexiones:
                     SUELDO INTEGER(10))""")
 
         self.miCursor.execute("""CREATE TABLE PERROS (
-                    NOMBRE_PERRO VARCHAR(30) UNIQUE,
+                    NOMBRE_PERRO VARCHAR(30) COLLATE NOCASE UNIQUE,
                     NOMBRE_DUEÑO VARCHAR(30),
                     DIRECCION VARCHAR(30),
                     TELEFONO INTEGER(11),

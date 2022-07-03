@@ -18,10 +18,10 @@ perro = ttk.Frame(nb)
 nb.add(perro,text='Perros')
 
 recepcionista = ttk.Frame(nb)
-nb.add(recepcionista,text='carga de recepcionista')
+nb.add(recepcionista,text='Carga de recepcionista')
 
 peluquero = ttk.Frame(nb)
-nb.add(peluquero,text='carga de peluquero')
+nb.add(peluquero,text='Carga de peluquero')
 #==================================
 
 #=========== VAR PERROS ===========
